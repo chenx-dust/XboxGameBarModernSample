@@ -14,15 +14,25 @@
     <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Gaming.XboxGameBar" Version="7.3.2506120" GeneratePathProperty="true" />
     <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.2.0" />
   </ItemGroup>
+  <PropertyGroup>
+    <Native-Platform Condition="'$(Platform)' == 'Win32'">x86</Native-Platform>
+    <Native-Platform Condition="'$(Platform)' != 'Win32'">$(Platform)</Native-Platform>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Gaming.XboxGameBar">
-      <HintPath>Microsoft.Gaming.XboxGameBar.winmd</HintPath>
-      <IsWinMDFile>true</IsWinMDFile>
-    </Reference>
+    <ReferenceCopyLocalPaths Include="$(PkgMicrosoft_Gaming_XboxGameBar)\lib\uap10.0\Microsoft.Gaming.XboxGameBar.winmd" />
+    <ReferenceCopyLocalPaths Include="$(PkgMicrosoft_Gaming_XboxGameBar)\runtimes\win10-$(Native-Platform)\native\Microsoft.Gaming.XboxGameBar.dll" />
+    <ReferenceCopyLocalPaths Include="$(PkgMicrosoft_Gaming_XboxGameBar)\runtimes\win10-$(Native-Platform)\native\Microsoft.Gaming.XboxGameBar.pri" />
+    <ReferenceCopyLocalPaths Include="$(PkgMicrosoft_Gaming_XboxGameBar)\private\Microsoft.Gaming.XboxGameBar.Private.winmd" />
+    <CsWinRTInputs Include="$(PkgMicrosoft_Gaming_XboxGameBar)\lib\uap10.0\Microsoft.Gaming.XboxGameBar.winmd" />
   </ItemGroup>
   <PropertyGroup>
-    <CsWinRTIncludes>Microsoft.Gaming.XboxGameBar</CsWinRTIncludes>
+    <CsWinRTIncludes>
+      Microsoft.Gaming.XboxGameBar;
+      Microsoft.Gaming.XboxGameBar.Authentication;
+      Microsoft.Gaming.XboxGameBar.Input;
+    </CsWinRTIncludes>
   </PropertyGroup>
 </Project>
