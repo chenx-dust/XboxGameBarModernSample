@@ -8,29 +8,35 @@ This sample is based on [microsoft/XboxGameBarSamples: Samples/WidgetSampleCS](h
 1. Install [CsWinRT](https://github.com/microsoft/CsWinRT) in NuGet package manager.
 2. Add following to your .csproj file:
 
-    ```xml
-    <Project>
+```xml
+<Project>
+    <!-- ... -->
+    <ItemGroup>
+        <!-- Add a property GeneratePathProperty="true" to SDK, like below -->
+        <PackageReference Include="Microsoft.Gaming.XboxGameBar" Version="7.3.2506120" GeneratePathProperty="true" />
         <!-- ... -->
-      <PropertyGroup>
-        <Native-Platform Condition="'$(Platform)' == 'Win32'">x86</Native-Platform>
-        <Native-Platform Condition="'$(Platform)' != 'Win32'">$(Platform)</Native-Platform>
-      </PropertyGroup>
-      <ItemGroup>
-        <ReferenceCopyLocalPaths Include="$(PkgMicrosoft_Gaming_XboxGameBar)\lib\uap10.0\Microsoft.Gaming.XboxGameBar.winmd" />
-        <ReferenceCopyLocalPaths Include="$(PkgMicrosoft_Gaming_XboxGameBar)\runtimes\win10-$(Native-Platform)\native\Microsoft.Gaming.XboxGameBar.dll" />
-        <ReferenceCopyLocalPaths Include="$(PkgMicrosoft_Gaming_XboxGameBar)\runtimes\win10-$(Native-Platform)\native\Microsoft.Gaming.XboxGameBar.pri" />
-        <ReferenceCopyLocalPaths Include="$(PkgMicrosoft_Gaming_XboxGameBar)\private\Microsoft.Gaming.XboxGameBar.Private.winmd" />
-        <CsWinRTInputs Include="$(PkgMicrosoft_Gaming_XboxGameBar)\lib\uap10.0\Microsoft.Gaming.XboxGameBar.winmd" />
-      </ItemGroup>
-      <PropertyGroup>
-        <CsWinRTIncludes>
-          Microsoft.Gaming.XboxGameBar;
-          Microsoft.Gaming.XboxGameBar.Authentication;
-          Microsoft.Gaming.XboxGameBar.Input;
-        </CsWinRTIncludes>
-      </PropertyGroup>
-    </Project>
-    ```
+    </ItemGroup>
+    <!-- ... -->
+    <PropertyGroup>
+    <Native-Platform Condition="'$(Platform)' == 'Win32'">x86</Native-Platform>
+    <Native-Platform Condition="'$(Platform)' != 'Win32'">$(Platform)</Native-Platform>
+    </PropertyGroup>
+    <ItemGroup>
+    <ReferenceCopyLocalPaths Include="$(PkgMicrosoft_Gaming_XboxGameBar)\lib\uap10.0\Microsoft.Gaming.XboxGameBar.winmd" />
+    <ReferenceCopyLocalPaths Include="$(PkgMicrosoft_Gaming_XboxGameBar)\runtimes\win10-$(Native-Platform)\native\Microsoft.Gaming.XboxGameBar.dll" />
+    <ReferenceCopyLocalPaths Include="$(PkgMicrosoft_Gaming_XboxGameBar)\runtimes\win10-$(Native-Platform)\native\Microsoft.Gaming.XboxGameBar.pri" />
+    <ReferenceCopyLocalPaths Include="$(PkgMicrosoft_Gaming_XboxGameBar)\private\Microsoft.Gaming.XboxGameBar.Private.winmd" />
+    <CsWinRTInputs Include="$(PkgMicrosoft_Gaming_XboxGameBar)\lib\uap10.0\Microsoft.Gaming.XboxGameBar.winmd" />
+    </ItemGroup>
+    <PropertyGroup>
+    <CsWinRTIncludes>
+        Microsoft.Gaming.XboxGameBar;
+        Microsoft.Gaming.XboxGameBar.Authentication;
+        Microsoft.Gaming.XboxGameBar.Input;
+    </CsWinRTIncludes>
+    </PropertyGroup>
+</Project>
+```
 
 ## License
 
